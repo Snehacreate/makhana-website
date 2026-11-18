@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAKHANA | Better Snacking, Better Living</title>
+
+<style>
+:root {
+    --green: #153d29;
+    --deep: #0d2b1d;
+    --cream: #fff9ed;
+    --gold: #d6ad62;
+    --muted: #65745d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--green);
+    font-family: Arial, sans-serif;
+}
+
+header {
+    height: 82px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 15px #153d2910;
+}
+
+.logo {
+    font-family: Georgia, serif;
+    font-size: 29px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo small {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 11px;
+    font-style: italic;
+    letter-spacing: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+nav a {
+    color: var(--green);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #b17b31;
+}
+
+.cart {.cart-panel {
+    display: none;
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    width: 350px;
+    max-width: calc(100% - 30px);
+    max-height: 75vh;
+    overflow-y: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px #0003;
+    z-index: 100;
+}
+
+.cart-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.cart-heading button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-row button {
+    padding: 5px 9px;
+    cursor: pointer;
+}
+
+.cart-total {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 22px 0;
+}
+    border: 1px solid var(--green);
+    border-radius: 30px;
+    padding: 10px 17px;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 490px;
+    padding: 65px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 35px;
+    background:
+      radial-gradient(circle at 15% 70%, #dce5a6, transparent 40%),
+      linear-gradient(110deg, #fff5d9, #dce7c5 55%, #173e29);
+    overflow: hidden;
+}
+
+.eyebrow {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #a77b38;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.02;
+    margin-bottom: 22px;
+}
+
+.hero p {
+    max-width: 440px;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #52654a;
+    margin-bottom: 28px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 15px 27px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .25s;
+}
+
+.btn:hover {
+    background: #b17b31;
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    height: 360px;
+    width: 100%;
+    border-radius: 48% 48% 12px 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px #102d1c35;
+    border: 5px solid #fff7df;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 85% center;
+}
+
+.benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 25px 8%;
+    background: #f5ecd8;
+    text-align: center;
+    gap: 20px;
+}
+
+.benefit {
+    padding: 10px;
+    border-right: 1px solid #c7c7a4;
+}
+
+.benefit:last-child {
+    border: none;
+}
+
+.benefit strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.benefit span {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.section {
+    padding: 75px 8%;
+    text-align: center;
+}
+
+.section h2 {
+    font-family: Georgia, serif;
+    font-size: 43px;
+    margin-bottom: 12px;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+}
+
+.product {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e7dfcc;
+    box-shadow: 0 8px 25px #153d2910;
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 35px #153d2920;
+}
+
+.pack {
+    height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.pack::before {
+    content: "";
+    width: 125px;
+    height: 160px;
+    background: linear-gradient(140deg, #fff0c9, #d6c28e);
+    border: 3px solid #fff8e6;
+    border-radius: 12px 12px 20px 20px;
+    box-shadow: 8px 12px 20px #0002;
+    position: absolute;
+}
+
+.pack::after {
+    content: "MAKHANA";
+    position: absolute;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    font-size: 17px;
+    color: var(--green);
+}
+
+.classic .pack {
+    background: linear-gradient(135deg, #e3e9c7, #fff0d1);
+}
+
+.peri .pack {
+    background: linear-gradient(135deg, #f7c28c, #ffe6b9);
+}
+
+.onion .pack {
+    background: linear-gradient(135deg, #d8c9ed, #f9e9d9);
+}
+
+.peri .pack::before {
+    background: linear-gradient(140deg, #ed7c35, #a93418);
+}
+
+.onion .pack::before {
+    background: linear-gradient(140deg, #a78acb, #61447f);
+}
+
+.product-info {
+    padding: 23px;
+}
+
+.product-info h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+    min-height: 45px;
+}
+
+.price {
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.price del {
+    font-size: 13px;
+    color: #999;
+    margin-left: 8px;
+    font-weight: normal;
+}
+
+.add {
+    width: 100%;
+    border: none;
+    background: var(--green);
+    color: white;
+    padding: 13px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.add:hover {
+    background: #b17b31;
+}
+
+.story {
+    background: var(--deep);
+    color: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+    text-align: left;
+}
+
+.story h2 {
+    font-size: 42px;
+    line-height: 1.15;
+}
+
+.story p {
+    color: #d9dfcf;
+    line-height: 1.9;
+    font-family: Georgia, serif;
+    font-size: 17px;
+}
+
+.contact {
+    background: #f0e8d6;
+}
+
+footer {
+    background: #092419;
+    color: #e9e4d4;
+    padding: 35px 8%;
+    text-align: center;
+    line-height: 2;
+}
+
+footer a {
+    color: #e9e4d4;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+@media(max-width: 800px) {
+    header {
+        height: auto;
+        padding: 20px 5%;
+        flex-wrap: wrap;
+        gap: 18px;
+    }
+
+    nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image {
+        height: 270px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit {
+        border-right: none;
+        border-bottom: 1px solid #c7c7a4;
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        MAKHANA.
+        <small>Better Snacking. Better Living.</small>
+    </div>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#products">SHOP</a>
+        <a href="#story">OUR STORY</a>
+        <a href="#benefits">BENEFITS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <button class="cart" onclick="toggleCart()">
+    Cart: <span id="cart-count">0</span>
+</button>
+ <span id="cart-count">0</span></div>
+</header>
+
+<div id="cart-panel" class="cart-panel">
+    <div class="cart-heading">
+        <h2>Your Shopping Cart</h2>
+        <button onclick="toggleCart()">Close</button>
+    </div>
+
+    <div id="cart-items">
+        <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-total">
+        Total: ₹<span id="cart-total">0</span>
+    </div>
+
+    <button class="add" onclick="checkout()">
+        Proceed to Checkout
+    </button>
+</div><section class="hero" id="home">
+    <div>
+        <div class="eyebrow">NATURE'S FINEST SNACK</div>
+        <h1>Snack Better.<br>Live Better.</h1>
+        <p>
+            Discover the goodness of makhana —
+            a simple, delicious and wholesome way to snack.
+        </p>
+        <a href="#products" class="btn">Explore Our Range →</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='hero.png.jpeg') }}"
+             alt="MAKHANA premium snack collection">
+    </div>
+</section>
+
+<section class="benefits" id="benefits">
+    <div class="benefit">
+        <strong>100% Natural</strong>
+        <span>Pure goodness in every bite</span>
+    </div>
+    <div class="benefit">
+        <strong>Rich in Nutrition</strong>
+        <span>A wholesome snack choice</span>
+    </div>
+    <div class="benefit">
+        <strong>Guilt-Free Snacking</strong>
+        <span>Enjoy your snack break</span>
+    </div>
+</section>
+
+<section class="section" id="products">
+    <div class="eyebrow">MADE FOR YOUR CRAVINGS</div>
+    <h2>Our Collection</h2>
+    <p class="subtitle">
+        Discover flavours made for every kind of craving.
+    </p>
+
+    <div class="products">
+
+        <div class="product classic">
+            <div class="pack"></div>
+            <div class="product-info">
+                <h3>Classic Makhana</h3>
+                <p>Lightly roasted makhana for everyday snacking.</p>
+                <div class="price">₹149 <del>₹199</del></div>
+                <button class="add" onclick="addToCart('Classic Makhana',149)">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+        <div class="product peri">
+            <div class="pack"></div>
+            <div class="product-info">
+                <h3>Peri Peri Makhana</h3>
+                <p>A spicy twist for lovers of bold flavours.</p>
+                <div class="price">₹169 <del>₹229</del></div>
+                <button class="add" onclick="addToCart('Peri Peri Makhana',169)">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+        <div class="product onion">
+            <div class="pack"></div>
+            <div class="product-info">
+                <h3>Cream & Onion</h3>
+                <p>A creamy and savoury flavour in every bite.</p>
+                <div class="price">₹169 <del>₹229</del></div>
+                <button class="add" onclick="addToCart('Cream & Onion',169)">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section story" id="story">
+    <div>
+        <div class="eyebrow">THE STORY BEHIND THE BRAND</div>
+        <h2>Rooted in Nature.<br>Made for Today.</h2>
+    </div>
+
+    <p>
+        MAKHANA celebrates a traditional Indian snack
+        with a fresh, modern identity. Our vision is to
+        make makhana an exciting part of everyday life.
+        <br><br>
+        From a familiar favourite to a modern snacking
+        experience, discover a better way to enjoy every bite.
+    </p>
+</section>
+
+<section class="section contact" id="contact">
+    <div class="eyebrow">LET'S CONNECT</div>
+    <h2>We'd Love to Hear From You</h2>
+    <p class="subtitle">
+        Questions about our brand or products?
+        Get in touch with us.
+    </p>
+    <a href="mailto:hello@makhana.com" class="btn">Contact Us →</a>
+</section>
+
+<footer>
+    <div class="logo">MAKHANA.</div>
+    <p>Better Snacking. Better Living.</p>
+    <p>
+        <a href="#home">Home</a>
+        <a href="#products">Shop</a>
+        <a href="#story">Our Story</a>
+        <a href="#contact">Contact</a>
+    </p>
+    <p>© 2026 MAKHANA. All rights reserved.</p>
+</footer>
+
+<script>
+let cartCount = 0;
+let cartItems = [];
+
+function addToCart(name, price) {
+    cartCount++;
+    cartItems.push({name: name, price: price});
+    document.getElementById("cart-count").textContent = cartCount;
+    alert(name + " added to your cart!");
+}
+</script>
+let cartItems = [];
+
+function addToCart(name, price) {
+    const existing = cartItems.find(item => item.name === name);
+
+    if (existing) {
+        existing.quantity++;
+    } else {
+        cartItems.push({
+            name: name,
+            price: price,
+            quantity: 1
+        });
+    }
+
+    updateCart();
+    toggleCart(true);
+}
+
+function updateCart() {
+    const count = cartItems.reduce(
+        (sum, item) => sum + item.quantity, 0
+    );
+
+    const total = cartItems.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+    );
+
+    document.getElementById("cart-count").textContent = count;
+    document.getElementById("cart-total").textContent = total;
+
+    const container = document.getElementById("cart-items");
+
+    if (cartItems.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+    }
+
+    container.innerHTML = cartItems.map((item, index) => `
+        <div class="cart-row">
+            <div>
+                <strong>${item.name}</strong><br>
+                ₹${item.price} × ${item.quantity}
+            </div>
+            <div>
+                <button onclick="changeQuantity(${index}, -1)">−</button>
+                <button onclick="changeQuantity(${index}, 1)">+</button>
+                <button onclick="removeItem(${index})">Remove</button>
+            </div>
+        </div>
+    `).join("");
+}
+
+function changeQuantity(index, amount) {
+    cartItems[index].quantity += amount;
+
+    if (cartItems[index].quantity <= 0) {
+        cartItems.splice(index, 1);
+    }
+
+    updateCart();
+}
+
+function removeItem(index) {
+    cartItems.splice(index, 1);
+    updateCart();
+}
+
+function toggleCart(forceOpen = false) {
+    const panel = document.getElementById("cart-panel");
+
+    if (forceOpen) {
+        panel.style.display = "block";
+    } else {
+        panel.style.display =
+            panel.style.display === "block" ? "none" : "block";
+    }
+}
+
+function checkout() {
+    if (cartItems.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    window.location.href = "/checkout";
+}
+
+updateCart();
+<html>
+
+
